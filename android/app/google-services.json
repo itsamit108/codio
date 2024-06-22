@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "568812232875",
+    "project_id": "codio-12c19",
+    "storage_bucket": "codio-12c19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568812232875:android:805d9d4597c5ff942197ee",
+        "android_client_info": {
+          "package_name": "com.example.codio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSYRhbvfnih5BM08efbvUyJW-pi1YCrVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
