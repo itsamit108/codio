@@ -1,39 +1,49 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:flutter/material.dart';
 
-void main() async {
-  // Ensure that plugin services are initialized
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Initialize Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  // Run the app
   runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
-    ),
+    const App(),
   );
 }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class App extends StatefulWidget {
+  const App({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<App> createState() => _AppState();
 }
 
-class _HomeState extends State<Home> {
+class _AppState extends State<App> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Hello, World!'),
-      ),
+    return FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: Text('Error'),
+          );
+        }
+
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return const MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: Text('App'),
+          );
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Text('Loading'),
+        );
+      },
     );
   }
 }
