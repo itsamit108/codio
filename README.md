@@ -1,6 +1,6 @@
 # Codio
 
-Codio is a dynamic quiz application developed using Flutter, offering an interactive experience for users to test their knowledge on various topics.
+Codio, a programming challenge app developed using Flutter, offering an interactive experience for users to test their knowledge on various topics.
 
 ## Table of Contents
 
